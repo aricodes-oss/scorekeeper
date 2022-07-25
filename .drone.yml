@@ -1,0 +1,31 @@
+kind: pipeline
+type: docker
+name: publish
+
+platform:
+  os: linux
+  arch: arm64
+
+trigger:
+  branch:
+    - main
+
+steps:
+  - name: build
+    image: node
+    commands:
+      - npm install
+      - npm run build
+
+  - name: publish
+    image: instrumentisto/rsync-ssh
+    commands:
+      - echo "$PRIVATE_KEY" >> id_rsa
+      - chmod 600 id_rsa
+      - cd dist
+      - rsync -avz -e 'ssh -i ../id_rsa -o StrictHostKeyChecking=no' --progress ./* $DEST
+    environment:
+      PRIVATE_KEY:
+        from_secret: PRIVATE_KEY
+      DEST:
+        from_secret: RSYNC_DEST
