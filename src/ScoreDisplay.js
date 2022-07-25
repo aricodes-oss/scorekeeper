@@ -14,7 +14,7 @@ const ScoreDisplay = () => {
 
   useHotkeys('=, +, up', () => dispatch(increment()));
   useHotkeys('-, _, down', () => dispatch(decrement()));
-  useHotkeys('u, left, ctrl+z', () => dispatch(undo()));
+  useHotkeys('u, ctrl+z', () => dispatch(undo()));
   useHotkeys('r', () => dispatch(reset()));
 
   return (
