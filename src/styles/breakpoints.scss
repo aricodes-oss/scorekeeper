@@ -1,0 +1,28 @@
+// Media queries
+@mixin media($type) {
+  @if $type == tiny {
+    @media only screen and (min-width: 0px) and (max-width: 599px) {
+      @content;
+    }
+  } @else if $type == small {
+    @media only screen and (min-width: 600px) and (max-width: 999px) {
+      @content;
+    }
+  } @else if $type == mobile {
+    @media only screen and (min-width: 0px) and (max-width: 999px) {
+      @content;
+    }
+  } @else if $type == large {
+    @media only screen and (min-width: 1000px) {
+      @content;
+    }
+  } @else if $type == xlarge {
+    @media only screen and (min-width: 1200px) {
+      @content;
+    }
+  } @else if $type == xxlarge {
+    @media only screen and (min-width: 1300px) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@use 'colors';
+@use 'breakpoints';
+
+.container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @include breakpoints.media(mobile) {
+    flex-direction: column;
+  }
+
+  .half {
+    flex: 1 1 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: colors.$white;
+    text-shadow: 2px 2px 4px colors.$black;
+
+    font-family: Roboto;
+    font-size: 64px;
+
+    cursor: pointer;
+    user-select: none;
+
+    &.green {
+      background-color: colors.$green;
+    }
+
+    &.red {
+      background-color: colors.$red;
+    }
+  }
+}

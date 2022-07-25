@@ -1,0 +1,11 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    volumes:
+      - /code/node_modules
+      - .:/code
+    ports:
+      - 3000:3000
